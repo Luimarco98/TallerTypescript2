@@ -1,4 +1,15 @@
 "use strict";
+var Student = /** @class */ (function () {
+    function Student(code, name, id, age, address, phone) {
+        this.code = code;
+        this.id = id;
+        this.age = age;
+        this.address = address;
+        this.phone = phone;
+        this.name = name;
+    }
+    return Student;
+}());
 var Course = /** @class */ (function () {
     function Course(name, professor, credits) {
         this.name = name;
@@ -55,3 +66,27 @@ function clearCoursesInTable() {
         }
     }
 }
+// Codigo para manejo de estudiante
+var theStudent = new Student(2876453, "Andres", 1012467541, 25, "Carrera 8 # 20 - 12", "30012365412");
+function renderStudent(student) {
+    var studentTable = document.getElementById("student-table");
+    var trElement = document.createElement("tr");
+    trElement.innerHTML = "<td>Codigo</td><td>" + student.code + "</td>";
+    studentTable.appendChild(trElement);
+    trElement = document.createElement("tr");
+    trElement.innerHTML = "<td>Nombre</td><td>" + student.name + "</td>";
+    studentTable.appendChild(trElement);
+    trElement = document.createElement("tr");
+    trElement.innerHTML = "<td>Cedula</td><td>" + student.id + "</td>";
+    studentTable.appendChild(trElement);
+    trElement = document.createElement("tr");
+    trElement.innerHTML = "<td>Edad</td><td>" + student.age + "</td>";
+    studentTable.appendChild(trElement);
+    trElement = document.createElement("tr");
+    trElement.innerHTML = "<td>Direccion</td><td>" + student.address + "</td>";
+    studentTable.appendChild(trElement);
+    trElement = document.createElement("tr");
+    trElement.innerHTML = "<td>Telefono</td><td>" + student.phone + "</td>";
+    studentTable.appendChild(trElement);
+}
+renderStudent(theStudent);
