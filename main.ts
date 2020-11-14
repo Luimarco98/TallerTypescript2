@@ -129,4 +129,19 @@ function renderStudent(student: Student) {
   studentTable.appendChild(trElement);
 }
 
+const minMaxButton = document.getElementById("button-filterByMinAndMax")!;
+minMaxButton.onclick = filterByMinAndMax;
+
+function filterByMinAndMax() {
+  const minSearchBox = <HTMLInputElement>document.getElementById("search-box-min")!;
+  const maxSearchBox = <HTMLInputElement>document.getElementById("search-box-max")!;
+
+  const minValue = minSearchBox.value === "" ? 0 : minSearchBox.value;
+  const maxValue = maxSearchBox.value === "" ? 100 : maxSearchBox.value;
+
+  clearCoursesInTable();
+  const filtered = dataCourses.filter(c => c.credits >= minValue && c.credits <= maxValue) // function(c) { return c.credits >= minValue && c.credits <= maxValue }
+  renderCoursesInTable(filtered);
+}
+
 renderStudent(theStudent);

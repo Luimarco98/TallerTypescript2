@@ -89,4 +89,15 @@ function renderStudent(student) {
     trElement.innerHTML = "<td>Telefono</td><td>" + student.phone + "</td>";
     studentTable.appendChild(trElement);
 }
+var minMaxButton = document.getElementById("button-filterByMinAndMax");
+minMaxButton.onclick = filterByMinAndMax;
+function filterByMinAndMax() {
+    var minSearchBox = document.getElementById("search-box-min");
+    var maxSearchBox = document.getElementById("search-box-max");
+    var minValue = minSearchBox.value === "" ? 0 : minSearchBox.value;
+    var maxValue = maxSearchBox.value === "" ? 100 : maxSearchBox.value;
+    clearCoursesInTable();
+    var filtered = dataCourses.filter(function (c) { return c.credits >= minValue && c.credits <= maxValue; }); // function(c) { return c.credits >= minValue && c.credits <= maxValue }
+    renderCoursesInTable(filtered);
+}
 renderStudent(theStudent);
